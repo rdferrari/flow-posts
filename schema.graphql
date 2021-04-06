@@ -1,0 +1,14 @@
+type Todo @model {
+  id: String!
+  relation: String!
+  title: String!
+  text: String!
+  media: String!
+  mediaType: String!
+  externalLink: String
+  createdAt: String!
+  pdfFile: String
+  updatedAt: String
+  latitude: String
+  longitude: String
+}
