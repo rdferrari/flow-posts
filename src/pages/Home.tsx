@@ -28,7 +28,7 @@ const ButtonContainer = styled.div`
   }
 `;
 
-function Home({ posts, setPosts, deletePost }: any): JSX.Element {
+function Home({ posts, setPosts }: any): JSX.Element {
   return (
     <UserStatusContext.Consumer>
       {(user) => (

@@ -1,4 +1,5 @@
 import { API, Storage } from "aws-amplify";
+import { Link } from "react-router-dom";
 import { deletePost } from "../graphql/mutations";
 
 const List = ({ posts, setPosts }: any) => {
@@ -25,15 +26,6 @@ const List = ({ posts, setPosts }: any) => {
     }
   }
 
-  //   async function removeMedia(madiaKey: any) {
-  //     try {
-  //       // method
-
-  //     } catch (err) {
-  //       console.log({ err });
-  //     }
-  //   }
-
   return (
     <div>
       {!posts ? (
@@ -41,7 +33,9 @@ const List = ({ posts, setPosts }: any) => {
       ) : (
         posts.map((post: any) => (
           <div key={post.id}>
-            <h3>{post.title}</h3>
+            <Link to={`/post/${post.id}`}>
+              <h3>{post.title}</h3>
+            </Link>
             <img alt={post.title} src={post.media} />
             <button onClick={() => removePost(post.id, post.media)}>
               delete

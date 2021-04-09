@@ -19,6 +19,7 @@ import Header from "./components/Header";
 // Pages
 import Home from "./pages/Home";
 import AuthPage from "./pages/AuthPage";
+import Post from "./pages/Post";
 
 // AWS Amplify config
 import config from "./aws-exports";
@@ -125,6 +126,12 @@ function App() {
               exact
               path="/"
               component={() => <Home posts={posts} setPosts={setPosts} />}
+            />
+
+            <Route
+              exact
+              path="/post/:id"
+              component={() => <Post posts={posts} setPosts={setPosts} />}
             />
 
             {user === "no user authenticated" ? (
