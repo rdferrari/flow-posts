@@ -1,12 +1,22 @@
-type Post @model {
+type Post
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "owner" }
+      { allow: public, operations: [read] }
+      { allow: private, operations: [read] }
+    ]
+  ) {
   id: ID!
-  relation: String!
+  owner: String
+  relation: String
   title: String!
   text: String!
   media: String!
-  mediaType: String!
+  mediaType: String
   externalLink: String
-  createdAt: String!
+  createdAt: String
+  isPublic: Boolean
   pdfFile: String
   updatedAt: String
   latitude: String

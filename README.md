@@ -1,6 +1,6 @@
-# Bare custom AWS Amplify Auth flow styled
+#Flowceptio.io
 
-Custom AWS Amplify, React JS and TypeScript sign in, sign up, user confirmation, password recovery and PWA install button.
+AWS Amplify, React JS and TypeScript sign in, sign up, user confirmation, password recovery and PWA install button.
 
 ## Clone the repo
 

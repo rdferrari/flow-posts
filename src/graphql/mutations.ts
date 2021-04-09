@@ -9,6 +9,7 @@ export const createPost = /* GraphQL */ `
   ) {
     createPost(input: $input, condition: $condition) {
       id
+      owner
       relation
       title
       text
@@ -16,6 +17,7 @@ export const createPost = /* GraphQL */ `
       mediaType
       externalLink
       createdAt
+      isPublic
       pdfFile
       updatedAt
       latitude
@@ -30,6 +32,7 @@ export const updatePost = /* GraphQL */ `
   ) {
     updatePost(input: $input, condition: $condition) {
       id
+      owner
       relation
       title
       text
@@ -37,6 +40,7 @@ export const updatePost = /* GraphQL */ `
       mediaType
       externalLink
       createdAt
+      isPublic
       pdfFile
       updatedAt
       latitude
@@ -51,6 +55,7 @@ export const deletePost = /* GraphQL */ `
   ) {
     deletePost(input: $input, condition: $condition) {
       id
+      owner
       relation
       title
       text
@@ -58,6 +63,7 @@ export const deletePost = /* GraphQL */ `
       mediaType
       externalLink
       createdAt
+      isPublic
       pdfFile
       updatedAt
       latitude

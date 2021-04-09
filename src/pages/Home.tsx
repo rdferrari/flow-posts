@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Tagline from "../components/TagLine";
+import List from "../components/List";
+import CreatePost from "../components/CreatePost";
 
 import { UserStatusContext } from "../App";
 
@@ -26,7 +28,7 @@ const ButtonContainer = styled.div`
   }
 `;
 
-function Home(): JSX.Element {
+function Home({ posts, setPosts, deletePost }: any): JSX.Element {
   return (
     <UserStatusContext.Consumer>
       {(user) => (
@@ -44,6 +46,9 @@ function Home(): JSX.Element {
               </Link>
             </ButtonContainer>
           )}
+
+          <CreatePost posts={posts} setPosts={setPosts} />
+          <List posts={posts} setPosts={setPosts} />
         </HomeContainer>
       )}
     </UserStatusContext.Consumer>

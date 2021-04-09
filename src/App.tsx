@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import Amplify, { Auth, Hub } from "aws-amplify";
+import Amplify, { Auth, Hub, API, Storage } from "aws-amplify";
 import {
   BrowserRouter as Router,
   Route,
@@ -9,6 +9,9 @@ import {
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/GlobalStyles";
 import { lightTheme, darkTheme } from "./components/Themes";
+
+// import query definition
+import { listPosts } from "./graphql/queries";
 
 // Components
 import Header from "./components/Header";
@@ -27,6 +30,7 @@ export const UserStatusContext = createContext("");
 function App() {
   const [user, setUser] = useState<string>("no user authenticated");
   const [theme, setTheme] = useState("light");
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     getUserData();
@@ -60,6 +64,10 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
   const getUserData = async () => {
     try {
       const user = await Auth.currentAuthenticatedUser();
@@ -81,6 +89,29 @@ function App() {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
+  async function fetchPosts() {
+    try {
+      const postData: any = await API.graphql({
+        query: listPosts,
+        variables: { limit: 100 },
+      });
+      let postsArray = postData.data.listPosts.items;
+
+      // Fetch media
+      postsArray = await Promise.all(
+        postsArray.map(async (post: any) => {
+          const mediaKey = await Storage.get(post.media);
+          post.media = mediaKey;
+          return post;
+        })
+      );
+
+      setPosts(postsArray);
+    } catch (err) {
+      console.log({ err });
+    }
+  }
+
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       {console.log(theme)}
@@ -90,7 +121,11 @@ function App() {
           <GlobalStyles />
           <Header signOut={signOut} themeToggler={themeToggler} theme={theme} />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              component={() => <Home posts={posts} setPosts={setPosts} />}
+            />
 
             {user === "no user authenticated" ? (
               <>

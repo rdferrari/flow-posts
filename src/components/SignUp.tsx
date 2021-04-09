@@ -72,14 +72,14 @@ const SignUp = () => {
     }
   }
 
-  if (userConfirmed === true) return <Redirect to="sign-in" />;
+  if (userConfirmed === true) return <Redirect to="auth" />;
 
   if (userUsername) {
     return (
-      <div>
+      <RightContainer>
         <p>
-          Thank you, {userUsername} for signin up in Dark Auth. We sent a
-          verification code to your email.
+          Thank you, {userUsername} for signin up. <br />
+          We sent a verification code to your email.
         </p>
 
         <Controller
@@ -104,7 +104,7 @@ const SignUp = () => {
         <p className="button-text" onClick={() => resendCode}>
           {"< Resend code />"}
         </p>
-      </div>
+      </RightContainer>
     );
   }
 

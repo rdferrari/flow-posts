@@ -6,6 +6,7 @@ export const getPost = /* GraphQL */ `
   query GetPost($id: ID!) {
     getPost(id: $id) {
       id
+      owner
       relation
       title
       text
@@ -13,6 +14,7 @@ export const getPost = /* GraphQL */ `
       mediaType
       externalLink
       createdAt
+      isPublic
       pdfFile
       updatedAt
       latitude
@@ -29,6 +31,7 @@ export const listPosts = /* GraphQL */ `
     listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        owner
         relation
         title
         text
@@ -36,6 +39,7 @@ export const listPosts = /* GraphQL */ `
         mediaType
         externalLink
         createdAt
+        isPublic
         pdfFile
         updatedAt
         latitude

@@ -6,6 +6,7 @@ export const onCreatePost = /* GraphQL */ `
   subscription OnCreatePost {
     onCreatePost {
       id
+      owner
       relation
       title
       text
@@ -13,6 +14,7 @@ export const onCreatePost = /* GraphQL */ `
       mediaType
       externalLink
       createdAt
+      isPublic
       pdfFile
       updatedAt
       latitude
@@ -24,6 +26,7 @@ export const onUpdatePost = /* GraphQL */ `
   subscription OnUpdatePost {
     onUpdatePost {
       id
+      owner
       relation
       title
       text
@@ -31,6 +34,7 @@ export const onUpdatePost = /* GraphQL */ `
       mediaType
       externalLink
       createdAt
+      isPublic
       pdfFile
       updatedAt
       latitude
@@ -42,6 +46,7 @@ export const onDeletePost = /* GraphQL */ `
   subscription OnDeletePost {
     onDeletePost {
       id
+      owner
       relation
       title
       text
@@ -49,6 +54,7 @@ export const onDeletePost = /* GraphQL */ `
       mediaType
       externalLink
       createdAt
+      isPublic
       pdfFile
       updatedAt
       latitude

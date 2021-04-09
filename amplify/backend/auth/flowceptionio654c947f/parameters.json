@@ -1,6 +1,6 @@
 {
     "identityPoolName": "flowceptionio654c947f_identitypool_654c947f",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "flowce654c947f",
     "userPoolName": "flowceptionio654c947f_userpool_654c947f",
     "autoVerifiedAttributes": [
