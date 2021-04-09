@@ -58,13 +58,15 @@ export default function CreatePost({ setPosts, posts }: any) {
   async function savePost(data: FormValues) {
     const { title, text } = data;
     try {
-      const postInfo = { title, text, media: mediaName };
+      const postInfo = { id: uuid(), title, text, media: mediaName };
       await Storage.put(mediaName, mediaInfo, {
         progressCallback(progress: any) {
           console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
           setUploading(`Uploaded: ${progress.loaded}/${progress.total}`);
         },
       });
+      const mediaUrl = await Storage.get(mediaName);
+
       await API.graphql({
         query: createPost,
         variables: { input: postInfo },
@@ -72,7 +74,8 @@ export default function CreatePost({ setPosts, posts }: any) {
         authMode: "AMAZON_COGNITO_USER_POOLS",
       });
       console.log(mediaInfo);
-      setPosts([...posts, { ...postInfo, media: prevImage }]);
+      console.log(mediaUrl);
+      setPosts([...posts, { ...postInfo, media: mediaUrl }]);
       // setPosts([...posts, postInfo]);
       reset({
         title: "",

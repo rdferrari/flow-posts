@@ -15,7 +15,8 @@ const List = ({ posts, setPosts }: any) => {
         authMode: "AMAZON_COGNITO_USER_POOLS",
       });
 
-      // await Storage.remove(mediaKey, { level: "private" });
+      mediaKey = mediaKey.substring(98, mediaKey.indexOf("?"));
+      await Storage.remove(mediaKey);
 
       const updatedPostsState = posts.filter((post: any) => post.id !== postId);
       setPosts(updatedPostsState);
