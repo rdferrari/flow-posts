@@ -1,55 +1,69 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Tagline from "../components/TagLine";
-import List from "../components/List";
-import CreatePost from "../components/CreatePost";
 
 import { UserStatusContext } from "../App";
 
-const HomeContainer = styled.div`
-  margin-top: 100px;
+const HeaderContainer = styled.div`
+  position: relative;
+`;
 
-  @media only screen and (min-width: 1024px) {
-    margin: 0;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -40%);
+const VideoContainer = styled.div`
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+`;
+const HeroVideo = styled.video`
+  display: inherit;
+  height: 95vh;
+  object-fit: cover;
+  width: 100%;
+`;
+
+const Mask = styled.div`
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 95vh;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+`;
+
+const TaglineContainer = styled.div`
+  color: white;
+  left: 20px;
+  position: absolute;
+  top: 50vh;
+  z-index: 3;
+
+  @media only screen and (min-width: 768px) {
   }
 `;
 
-const ButtonContainer = styled.div`
-  margin-top: 30px;
-  text-align: center;
-
-  @media only screen and (min-width: 1024px) {
-    text-align: left;
-  }
-`;
+const VIDEO =
+  "https://flowceptionio8aa338f82a884000915b17c1e6ee133a194519-dev.s3-us-west-2.amazonaws.com/public/fire-hero.mp4";
 
 function Home({ posts, setPosts }: any): JSX.Element {
   return (
     <UserStatusContext.Consumer>
       {(user) => (
-        <HomeContainer>
-          <Tagline />
-
-          {user !== "no user authenticated" ? (
-            <p>Hello {user}</p>
-          ) : (
-            <ButtonContainer>
-              <Link to="/auth">
-                <button>
-                  <p>Sign in</p>
-                </button>
-              </Link>
-            </ButtonContainer>
-          )}
-
-          <CreatePost posts={posts} setPosts={setPosts} />
-          <List posts={posts} setPosts={setPosts} />
-        </HomeContainer>
+        <>
+          <VideoContainer>
+            <HeroVideo autoPlay loop muted playsInline>
+              <source src={VIDEO} type="video/mp4" /> Your browser does not
+              support HTML5 video.{" "}
+            </HeroVideo>
+          </VideoContainer>
+          <Mask></Mask>
+          <TaglineContainer>
+            <p>
+              Impermanent,
+              <br /> unsatisfactory
+              <br /> and substanceless
+            </p>
+            <p>Explore</p>
+          </TaglineContainer>
+          <h1>Home</h1>
+        </>
       )}
     </UserStatusContext.Consumer>
   );

@@ -6,7 +6,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/GlobalStyles";
 import { lightTheme, darkTheme } from "./components/Themes";
 
@@ -20,6 +20,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import AuthPage from "./pages/AuthPage";
 import Post from "./pages/Post";
+import Posts from "./pages/Posts";
 
 // AWS Amplify config
 import config from "./aws-exports";
@@ -27,6 +28,13 @@ Amplify.configure(config);
 
 // User context
 export const UserStatusContext = createContext("");
+
+const AppContainer = styled.div`
+  left: 0;
+  position: absolute;
+  top: 60px;
+  width: 100%;
+`;
 
 function App() {
   const [user, setUser] = useState<string>("no user authenticated");
@@ -115,35 +123,41 @@ function App() {
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      {console.log(theme)}
-      {console.log(user)}
       <UserStatusContext.Provider value={user}>
         <Router>
           <GlobalStyles />
           <Header signOut={signOut} themeToggler={themeToggler} theme={theme} />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={() => <Home posts={posts} setPosts={setPosts} />}
-            />
+          <AppContainer>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                component={() => <Home posts={posts} setPosts={setPosts} />}
+              />
 
-            <Route
-              exact
-              path="/post/:id"
-              component={() => <Post posts={posts} setPosts={setPosts} />}
-            />
+              <Route
+                exact
+                path="/posts"
+                component={() => <Posts posts={posts} setPosts={setPosts} />}
+              />
 
-            {user === "no user authenticated" ? (
-              <>
-                <Route path="/auth" component={AuthPage} />
-              </>
-            ) : (
-              <>
-                <Route path="/auth" render={() => <Redirect to="/" />} />
-              </>
-            )}
-          </Switch>
+              <Route
+                exact
+                path="/post/:id"
+                component={() => <Post posts={posts} setPosts={setPosts} />}
+              />
+
+              {user === "no user authenticated" ? (
+                <>
+                  <Route path="/auth" component={AuthPage} />
+                </>
+              ) : (
+                <>
+                  <Route path="/auth" render={() => <Redirect to="/" />} />
+                </>
+              )}
+            </Switch>
+          </AppContainer>
         </Router>
       </UserStatusContext.Provider>
     </ThemeProvider>

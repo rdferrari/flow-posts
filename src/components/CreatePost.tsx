@@ -123,7 +123,7 @@ export default function CreatePost({ setPosts, posts }: any) {
       {errors.code && <p className="error-message">Paragraph is required</p>}
 
       <input type="file" onChange={onChangeFile} />
-      {prevImage && <img src={prevImage} />}
+      {prevImage && <img alt="Uploaded" src={prevImage} />}
 
       <button onClick={handleSubmit(savePost)}>
         <p>Save post</p>

@@ -40,14 +40,14 @@ function EditPost({ setPosts, posts, postId }: any) {
   const { control, handleSubmit, errors } = useForm();
   const [post, setPost] = useState<any>("");
   const [saving, setSaving] = useState(false);
-  const [saved, setSaved] = useState(false);
   const [mediaName, setMediaName] = useState("");
   const [mediaInfo, setMediaInfo] = useState("");
   const [uploading, setUploading] = useState("");
   const [prevImage, setPreviewImage] = useState("");
+  const [editPost, setEditPost] = useState(false);
 
   useEffect(() => {
-    fetchPost();
+    fetchOnePost();
   }, []);
 
   function onChangeFile(e: any) {
@@ -127,17 +127,30 @@ function EditPost({ setPosts, posts, postId }: any) {
     }
   }
 
-  async function fetchPost() {
+  async function fetchOnePost() {
     try {
       const postFiltered: any = await API.graphql({
         query: getPost,
         variables: { id: postId },
       });
       const postFetched = postFiltered.data.getPost;
+
+      const mediaUrl = await Storage.get(postFetched.media);
+      postFetched.media = mediaUrl;
       setPost(postFetched);
     } catch (err) {
       console.log({ err });
     }
+  }
+
+  if (!editPost) {
+    return (
+      <div>
+        <h1>{post.title}</h1>
+        <img alt={post.title} src={post.media} />
+        <button onClick={() => setEditPost(!editPost)}>Edit</button>
+      </div>
+    );
   }
 
   return (
@@ -184,11 +197,12 @@ function EditPost({ setPosts, posts, postId }: any) {
             )}
 
             <input type="file" onChange={onChangeFile} />
-            {prevImage && <img src={prevImage} />}
+            {prevImage && <img alt="Uploaded" src={prevImage} />}
 
             <button onClick={handleSubmit(savePost)}>
               <p>Save post</p>
             </button>
+            <button onClick={() => setEditPost(!editPost)}>Close</button>
             {uploading && <p>{uploading}</p>}
           </>
         )

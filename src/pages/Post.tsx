@@ -17,14 +17,14 @@ const HomeContainer = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
-  margin-top: 30px;
-  text-align: center;
+// const ButtonContainer = styled.div`
+//   margin-top: 30px;
+//   text-align: center;
 
-  @media only screen and (min-width: 1024px) {
-    text-align: left;
-  }
-`;
+//   @media only screen and (min-width: 1024px) {
+//     text-align: left;
+//   }
+// `;
 
 function Post({ posts, setPosts }: any): JSX.Element {
   let { id }: any = useParams();
@@ -33,8 +33,10 @@ function Post({ posts, setPosts }: any): JSX.Element {
     <UserStatusContext.Consumer>
       {(user) => (
         <HomeContainer>
-          <h3>Post {id}</h3>
-          <EditPost posts={posts} setPosts={setPosts} postId={id} />
+          <h1>Post</h1>
+          {user !== "no user authenticated" && (
+            <EditPost posts={posts} setPosts={setPosts} postId={id} />
+          )}
         </HomeContainer>
       )}
     </UserStatusContext.Consumer>
