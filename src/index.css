@@ -12,6 +12,41 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: titleFont;
+  src: url("./fonts/PlayfairDisplay-Bold.ttf");
+}
+@font-face {
+  font-family: textFontLight;
+  src: url("./fonts/Quicksand-Light.ttf");
+}
+@font-face {
+  font-family: textFontRegular;
+  src: url("./fonts/Quicksand-Regular.ttf");
+}
+@font-face {
+  font-family: textFontBold;
+  src: url("./fonts/Quicksand-SemiBold.ttf");
+}
+
+h1 {
+  font-family: titleFont;
+  letter-spacing: 5px;
+}
+
+h2 {
+  font-family: titleFont;
+}
+
+h3 {
+  font-family: titleFont;
+  letter-spacing: 5px;
+}
+
+p {
+  font-family: textFontLight;
+}
+
 a {
   color: #ff00eb;
   text-decoration: none;

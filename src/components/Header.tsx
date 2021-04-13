@@ -25,11 +25,26 @@ const HeaderBarContainer = styled.div`
 const HeaderLeft = styled.div`
   display: flex;
   margin: 5px 10px;
+
+  @media only screen and (min-width: 768px) {
+    margin: 5px 50px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin: 5px 90px;
+  }
 `;
 
 const HeaderRight = styled.div`
   display: flex;
   margin: 5px 10px;
+
+  @media only screen and (min-width: 768px) {
+    margin: 5px 50px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin: 5px 90px;
 `;
 
 const MenuContainer = styled.div`
