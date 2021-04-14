@@ -57,13 +57,53 @@ const SectionOne = styled.div`
   padding: 80px 20px;
 
   @media only screen and (min-width: 768px) {
-    @media only screen and (min-width: 768px) {
-      left: 60px;
-      margin-top: -35px;
-    }
-  
-    @media only screen and (min-width: 1200px) {
-      left: 100px;
+    left: 60px;
+    margin-top: -35px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    left: 100px;
+  }
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 40px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 80px;
+  }
+`;
+
+const TextContainer = styled.div`
+  @media only screen and (min-width: 768px) {
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin-right: 50px;
+    width: 630px;
+  }
+`;
+
+const ContentVideo = styled.video`
+  display: inherit;
+  height: 320px;
+  margin-top: 50px;
+  object-fit: cover;
+  width: 100%;
+
+  @media only screen and (min-width: 768px) {
+    height: 400px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 500px;
   }
 `;
 
@@ -81,12 +121,12 @@ const BodyText = styled.p`
   font-size: 18px;
 
   @media only screen and (min-width: 768px) {
-    font-size: 25px;
+    font-size: 22px;
   }
 `;
 
-const VIDEO =
-  "https://flowceptionio8aa338f82a884000915b17c1e6ee133a194519-dev.s3-us-west-2.amazonaws.com/public/fire-hero.mp4";
+const URL =
+  "https://flowceptionio8aa338f82a884000915b17c1e6ee133a194519-dev.s3-us-west-2.amazonaws.com/public/";
 
 function Home({ posts, setPosts }: any): JSX.Element {
   return (
@@ -95,8 +135,8 @@ function Home({ posts, setPosts }: any): JSX.Element {
         <>
           <VideoContainer>
             <HeroVideo autoPlay loop muted playsInline>
-              <source src={VIDEO} type="video/mp4" /> Your browser does not
-              support HTML5 video.{" "}
+              <source src={`${URL}fire-hero.mp4`} type="video/mp4" /> Your
+              browser does not support HTML5 video.{" "}
             </HeroVideo>
           </VideoContainer>
           <Mask></Mask>
@@ -109,17 +149,28 @@ function Home({ posts, setPosts }: any): JSX.Element {
             <p>Explore</p>
           </TaglineContainer>
           <SectionOne>
-            <div>
-              <Subtitle>flow + perception = flowception</Subtitle>
-              <BodyText>
-                This mind-body is arising and passing way, burning like fire.
-                Pleasant or painful, both are unsatisfactory. The former because
-                of its inevitable end; the last do not need an explanation. If
-                it is changing, it is never the same, it is a flow of
-                perceptions, which is the experience of Flowception -
-                impermanent, substanceless and unsatisfactory.
-              </BodyText>
-            </div>
+            <ContentContainer>
+              <TextContainer>
+                <Subtitle>
+                  Flow + Perception
+                  <br /> = Flowception
+                </Subtitle>
+                <BodyText>
+                  This mind-body is arising and passing way, burning like fire.
+                  Pleasant or painful, both are unsatisfactory. The former
+                  because of its inevitable end; the last do not need an
+                  explanation. If it is changing, it is never the same, it is a
+                  flow of perceptions, which is the experience of Flowception -
+                  impermanent, substanceless and unsatisfactory.
+                </BodyText>
+              </TextContainer>
+              <div>
+                <ContentVideo autoPlay loop muted playsInline>
+                  <source src={`${URL}inception.mp4`} type="video/mp4" /> Your
+                  browser does not support HTML5 video.{" "}
+                </ContentVideo>
+              </div>
+            </ContentContainer>
           </SectionOne>
         </>
       )}
