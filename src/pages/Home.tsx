@@ -38,6 +38,7 @@ const TaglineContainer = styled.div`
 
   @media only screen and (min-width: 1200px) {
     left: 100px;
+    top: 30vh;
   }
 `;
 
@@ -50,19 +51,34 @@ const Tagline = styled.h1`
   }
 `;
 
-const SectionOne = styled.div`
-  background-color: ${darkGrey};
-  color: ${lightGrey};
+const Button = styled.p`
+  border-bottom: 2px solid ${action};
+  color: ${action};
+  cursor: pointer;
+  font-family: textFontBold;
+  font-size: 18px;
+  padding: 10px;
+  width: 150px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 22px;
+  }
+`;
+
+const Section = styled.div<{ backgroundColor: string; color: string }>`
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: -17px;
   padding: 80px 20px;
 
   @media only screen and (min-width: 768px) {
-    left: 60px;
-    margin-top: -35px;
   }
 
   @media only screen and (min-width: 1200px) {
-    left: 100px;
   }
 `;
 
@@ -71,23 +87,23 @@ const ContentContainer = styled.div`
   flex-direction: column;
 
   @media only screen and (min-width: 768px) {
-    padding: 0 40px;
+    width: 630px;
   }
 
   @media only screen and (min-width: 1200px) {
     flex-direction: row;
     justify-content: space-around;
     padding: 0 80px;
+    width: 1100px;
   }
 `;
 
 const TextContainer = styled.div`
   @media only screen and (min-width: 768px) {
+    width: 630px;
   }
-
   @media only screen and (min-width: 1200px) {
     margin-right: 50px;
-    width: 630px;
   }
 `;
 
@@ -96,10 +112,29 @@ const ContentVideo = styled.video`
   height: 320px;
   margin-top: 50px;
   object-fit: cover;
-  width: 100%;
+  position: absolute;
+  width: 85%;
 
   @media only screen and (min-width: 768px) {
     height: 400px;
+    width: 630px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 500px;
+  }
+`;
+
+const BoxLineVideo = styled.video`
+  border: 1px solid ${lightGrey};
+  height: 318px;
+  margin: 70px 0 0 20px;
+  position: relative;
+  width: 95%;
+
+  @media only screen and (min-width: 768px) {
+    height: 400px;
+    width: 630px;
   }
 
   @media only screen and (min-width: 1200px) {
@@ -108,7 +143,6 @@ const ContentVideo = styled.video`
 `;
 
 const Subtitle = styled.h2`
-  color: ${lightGrey};
   font-size: 25px;
 
   @media only screen and (min-width: 768px) {
@@ -117,7 +151,6 @@ const Subtitle = styled.h2`
 `;
 
 const BodyText = styled.p`
-  color: ${lightGrey};
   font-size: 18px;
 
   @media only screen and (min-width: 768px) {
@@ -146,9 +179,9 @@ function Home({ posts, setPosts }: any): JSX.Element {
               <br /> substanceless
               <br /> unsatisfactory
             </Tagline>
-            <p>Explore</p>
+            <Button>Explore</Button>
           </TaglineContainer>
-          <SectionOne>
+          <Section backgroundColor={darkGrey} color={lightGrey}>
             <ContentContainer>
               <TextContainer>
                 <Subtitle>
@@ -157,8 +190,8 @@ function Home({ posts, setPosts }: any): JSX.Element {
                 </Subtitle>
                 <BodyText>
                   This mind-body is arising and passing way, burning like fire.
-                  Pleasant or painful, both are unsatisfactory. The former
-                  because of its inevitable end; the last do not need an
+                  Pleasant or painful experiences, they are unsatisfactory. The
+                  former because of its inevitable end; the last do not need an
                   explanation. If it is changing, it is never the same, it is a
                   flow of perceptions, which is the experience of Flowception -
                   impermanent, substanceless and unsatisfactory.
@@ -169,9 +202,35 @@ function Home({ posts, setPosts }: any): JSX.Element {
                   <source src={`${URL}inception.mp4`} type="video/mp4" /> Your
                   browser does not support HTML5 video.{" "}
                 </ContentVideo>
+                <BoxLineVideo></BoxLineVideo>
               </div>
             </ContentContainer>
-          </SectionOne>
+          </Section>
+          <Section backgroundColor={lightGrey} color={darkGrey}>
+            <ContentContainer>
+              <TextContainer>
+                <Subtitle>
+                  Flow + Perception
+                  <br /> = Flowception
+                </Subtitle>
+                <BodyText>
+                  This mind-body is arising and passing way, burning like fire.
+                  Pleasant or painful experiences, they are unsatisfactory. The
+                  former because of its inevitable end; the last do not need an
+                  explanation. If it is changing, it is never the same, it is a
+                  flow of perceptions, which is the experience of Flowception -
+                  impermanent, substanceless and unsatisfactory.
+                </BodyText>
+              </TextContainer>
+              <div>
+                <ContentVideo autoPlay loop muted playsInline>
+                  <source src={`${URL}inception.mp4`} type="video/mp4" /> Your
+                  browser does not support HTML5 video.{" "}
+                </ContentVideo>
+                <BoxLineVideo></BoxLineVideo>
+              </div>
+            </ContentContainer>
+          </Section>
         </>
       )}
     </UserStatusContext.Consumer>
