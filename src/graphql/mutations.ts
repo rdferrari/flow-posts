@@ -14,14 +14,8 @@ export const createPost = /* GraphQL */ `
       title
       text
       media
-      mediaType
-      externalLink
       createdAt
-      isPublic
-      pdfFile
       updatedAt
-      latitude
-      longitude
     }
   }
 `;
@@ -37,14 +31,8 @@ export const updatePost = /* GraphQL */ `
       title
       text
       media
-      mediaType
-      externalLink
       createdAt
-      isPublic
-      pdfFile
       updatedAt
-      latitude
-      longitude
     }
   }
 `;
@@ -60,14 +48,8 @@ export const deletePost = /* GraphQL */ `
       title
       text
       media
-      mediaType
-      externalLink
       createdAt
-      isPublic
-      pdfFile
       updatedAt
-      latitude
-      longitude
     }
   }
 `;

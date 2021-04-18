@@ -11,14 +11,8 @@ export const onCreatePost = /* GraphQL */ `
       title
       text
       media
-      mediaType
-      externalLink
       createdAt
-      isPublic
-      pdfFile
       updatedAt
-      latitude
-      longitude
     }
   }
 `;
@@ -31,14 +25,8 @@ export const onUpdatePost = /* GraphQL */ `
       title
       text
       media
-      mediaType
-      externalLink
       createdAt
-      isPublic
-      pdfFile
       updatedAt
-      latitude
-      longitude
     }
   }
 `;
@@ -51,14 +39,8 @@ export const onDeletePost = /* GraphQL */ `
       title
       text
       media
-      mediaType
-      externalLink
       createdAt
-      isPublic
-      pdfFile
       updatedAt
-      latitude
-      longitude
     }
   }
 `;

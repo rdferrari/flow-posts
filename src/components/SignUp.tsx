@@ -16,6 +16,18 @@ const RightContainer = styled.div`
   }
 `;
 
+const Button = styled.button`
+  background-color: #88d5ba;
+  color: "#272727";
+  border: none;
+  border-radius: 4px;
+  font-family: textFontLight;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+  width: 240px;
+`;
+
 type FormValues = {
   username: string;
   email: string;
@@ -98,10 +110,10 @@ const SignUp = () => {
         />
         {errors.code && <p className="error-message">Code is required</p>}
 
-        <button onClick={handleSubmit(confirmUser)}>
+        <Button onClick={handleSubmit(confirmUser)}>
           <p>Confirm your account</p>
-        </button>
-        <p className="button-text" onClick={() => resendCode}>
+        </Button>
+        <p className="Button-text" onClick={() => resendCode}>
           {"< Resend code />"}
         </p>
       </RightContainer>
@@ -159,9 +171,9 @@ const SignUp = () => {
       />
       {errors.password && <p className="error-message">Password is required</p>}
 
-      <button onClick={handleSubmit(signUp)}>
+      <Button onClick={handleSubmit(signUp)}>
         <p>Sign up</p>
-      </button>
+      </Button>
 
       {errMessage && <p className="error-message">{errMessage}</p>}
     </RightContainer>

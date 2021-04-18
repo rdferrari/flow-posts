@@ -1,6 +1,6 @@
 {
   "auth": {
-    "flowceptionio654c947f": {
+    "flowposts07da9e87": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -8,7 +8,7 @@
     }
   },
   "api": {
-    "flowceptionio": {
+    "flowpostsapi": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -24,18 +24,12 @@
             {
               "authenticationType": "AMAZON_COGNITO_USER_POOLS",
               "userPoolConfig": {
-                "userPoolId": "authflowceptionio654c947f"
+                "userPoolId": "authflowposts07da9e87"
               }
             }
           ]
         }
       }
-    }
-  },
-  "storage": {
-    "flowceptioIOStorage": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation"
     }
   }
 }

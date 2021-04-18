@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Auth } from "aws-amplify";
 import { useForm, Controller } from "react-hook-form";
 import styled from "styled-components";
-import { action } from "../styles/colors";
 
 const FormContainer = styled.div`
   margin-top: 20px;
@@ -10,21 +9,21 @@ const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   @media only screen and (min-width: 1024px) {
     margin-top: 40px;
   }
 `;
 
-const Button = styled.p`
-  color: ${action};
-  cursor: pointer;
-  font-family: textFontBold;
-  font-size: 18px;
-
-  @media only screen and (min-width: 768px) {
-    font-size: 22px;
-  }
+const Button = styled.button`
+  background-color: #88d5ba;
+  color: "#272727";
+  border: none;
+  border-radius: 4px;
+  font-family: textFontLight;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+  width: 240px;
 `;
 
 interface FormValues {
@@ -166,9 +165,9 @@ const SignIn = () => {
           <p className="error-message">New Password is required</p>
         )}
 
-        <button onClick={handleSubmit(newPass)}>
+        <Button onClick={handleSubmit(newPass)}>
           <p>New password</p>
-        </button>
+        </Button>
       </FormContainer>
     );
   }
@@ -192,9 +191,9 @@ const SignIn = () => {
         />
         {errors.code && <p className="error-message">Email is required</p>}
 
-        <button onClick={handleSubmit(forgotPass)}>
+        <Button onClick={handleSubmit(forgotPass)}>
           <p>Recovery password</p>
-        </button>
+        </Button>
       </FormContainer>
     );
   }
@@ -222,9 +221,9 @@ const SignIn = () => {
           defaultValue=""
         />
 
-        <button onClick={handleSubmit(confirmUser)}>
-          <p>Confirm your account</p>
-        </button>
+        <Button onClick={handleSubmit(confirmUser)}>
+          Confirm your account
+        </Button>
       </div>
     );
   }
@@ -264,14 +263,16 @@ const SignIn = () => {
       />
       {errors.password && <p className="error-message">Password is required</p>}
 
-      <Button onClick={handleSubmit(signIn)}>{"< sign in />"}</Button>
+      <Button onClick={handleSubmit(signIn)}>
+        <p>Sign in</p>
+      </Button>
 
       {errMessage && <p className="error-message">{errMessage}</p>}
-      {/* <div>
-        <p onClick={() => setPassForgot(true)} className="button-text">
+      <div>
+        <p onClick={() => setPassForgot(true)} className="Button-text">
           {"< Forgotten password? />"}
         </p>
-      </div> */}
+      </div>
     </FormContainer>
   );
 };

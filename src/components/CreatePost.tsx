@@ -206,13 +206,13 @@ export default function CreatePost({ setPosts, posts }: any) {
               <p className="error-message">Paragraph is required</p>
             )}
           </div>
+          <input type="file" onChange={onChangeFile} />
+          {/* {prevImage && <img alt="Uploaded" src={prevImage} />} */}
+          {uploading && <p>{uploading}</p>}
         </TextContainer>
         <div>
           {/* <ContentImage alt={post.title} src={post.media} />
           <BoxLineVideo></BoxLineVideo> */}
-          <input type="file" onChange={onChangeFile} />
-          {/* {prevImage && <img alt="Uploaded" src={prevImage} />} */}
-          {uploading && <p>{uploading}</p>}
         </div>
       </ContentContainer>
       <Button onClick={handleSubmit(savePost)}>

@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "flowceptionio",
+  "AppSyncApiName": "flowpostsapi",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authflowceptionio654c947f",
+      "authflowposts07da9e87",
       "Outputs.UserPoolId"
     ]
   }

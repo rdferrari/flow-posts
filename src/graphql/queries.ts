@@ -11,14 +11,8 @@ export const getPost = /* GraphQL */ `
       title
       text
       media
-      mediaType
-      externalLink
       createdAt
-      isPublic
-      pdfFile
       updatedAt
-      latitude
-      longitude
     }
   }
 `;
@@ -36,14 +30,8 @@ export const listPosts = /* GraphQL */ `
         title
         text
         media
-        mediaType
-        externalLink
         createdAt
-        isPublic
-        pdfFile
         updatedAt
-        latitude
-        longitude
       }
       nextToken
     }

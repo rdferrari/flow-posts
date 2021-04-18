@@ -43,20 +43,18 @@ const AuthPage = () => {
         <div>
           <Tagline />
           <AuthToggle>
-            {/* <p>
+            <p>
               {signup === false
                 ? "If you do not have an account"
                 : "If you have an account"}
-            </p> */}
-            {/* <p className="button-text" onClick={() => setSignup(!signup)}>
+            </p>
+            <p className="button-text" onClick={() => setSignup(!signup)}>
               {signup === false ? "< Sign up />" : "< Sign in />"}
-            </p> */}
+            </p>
           </AuthToggle>
         </div>
 
-        <SignInC />
-
-        {/* {signup === false ? <SignInC /> : <SignUpC />} */}
+        {signup === false ? <SignInC /> : <SignUpC />}
       </ContentContainer>
     </AuthContainer>
   );

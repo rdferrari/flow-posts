@@ -9,14 +9,8 @@ export type CreatePostInput = {
   title: string,
   text: string,
   media: string,
-  mediaType?: string | null,
-  externalLink?: string | null,
   createdAt?: string | null,
-  isPublic?: boolean | null,
-  pdfFile?: string | null,
   updatedAt?: string | null,
-  latitude?: string | null,
-  longitude?: string | null,
 };
 
 export type ModelPostConditionInput = {
@@ -24,14 +18,8 @@ export type ModelPostConditionInput = {
   title?: ModelStringInput | null,
   text?: ModelStringInput | null,
   media?: ModelStringInput | null,
-  mediaType?: ModelStringInput | null,
-  externalLink?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
-  isPublic?: ModelBooleanInput | null,
-  pdfFile?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  latitude?: ModelStringInput | null,
-  longitude?: ModelStringInput | null,
   and?: Array< ModelPostConditionInput | null > | null,
   or?: Array< ModelPostConditionInput | null > | null,
   not?: ModelPostConditionInput | null,
@@ -77,13 +65,6 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
 export type Post = {
   __typename: "Post",
   id?: string,
@@ -92,14 +73,8 @@ export type Post = {
   title?: string,
   text?: string,
   media?: string,
-  mediaType?: string | null,
-  externalLink?: string | null,
   createdAt?: string | null,
-  isPublic?: boolean | null,
-  pdfFile?: string | null,
   updatedAt?: string | null,
-  latitude?: string | null,
-  longitude?: string | null,
 };
 
 export type UpdatePostInput = {
@@ -109,14 +84,8 @@ export type UpdatePostInput = {
   title?: string | null,
   text?: string | null,
   media?: string | null,
-  mediaType?: string | null,
-  externalLink?: string | null,
   createdAt?: string | null,
-  isPublic?: boolean | null,
-  pdfFile?: string | null,
   updatedAt?: string | null,
-  latitude?: string | null,
-  longitude?: string | null,
 };
 
 export type DeletePostInput = {
@@ -130,14 +99,8 @@ export type ModelPostFilterInput = {
   title?: ModelStringInput | null,
   text?: ModelStringInput | null,
   media?: ModelStringInput | null,
-  mediaType?: ModelStringInput | null,
-  externalLink?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
-  isPublic?: ModelBooleanInput | null,
-  pdfFile?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  latitude?: ModelStringInput | null,
-  longitude?: ModelStringInput | null,
   and?: Array< ModelPostFilterInput | null > | null,
   or?: Array< ModelPostFilterInput | null > | null,
   not?: ModelPostFilterInput | null,
@@ -179,14 +142,8 @@ export type CreatePostMutation = {
     title: string,
     text: string,
     media: string,
-    mediaType?: string | null,
-    externalLink?: string | null,
     createdAt?: string | null,
-    isPublic?: boolean | null,
-    pdfFile?: string | null,
     updatedAt?: string | null,
-    latitude?: string | null,
-    longitude?: string | null,
   } | null,
 };
 
@@ -204,14 +161,8 @@ export type UpdatePostMutation = {
     title: string,
     text: string,
     media: string,
-    mediaType?: string | null,
-    externalLink?: string | null,
     createdAt?: string | null,
-    isPublic?: boolean | null,
-    pdfFile?: string | null,
     updatedAt?: string | null,
-    latitude?: string | null,
-    longitude?: string | null,
   } | null,
 };
 
@@ -229,14 +180,8 @@ export type DeletePostMutation = {
     title: string,
     text: string,
     media: string,
-    mediaType?: string | null,
-    externalLink?: string | null,
     createdAt?: string | null,
-    isPublic?: boolean | null,
-    pdfFile?: string | null,
     updatedAt?: string | null,
-    latitude?: string | null,
-    longitude?: string | null,
   } | null,
 };
 
@@ -253,14 +198,8 @@ export type GetPostQuery = {
     title: string,
     text: string,
     media: string,
-    mediaType?: string | null,
-    externalLink?: string | null,
     createdAt?: string | null,
-    isPublic?: boolean | null,
-    pdfFile?: string | null,
     updatedAt?: string | null,
-    latitude?: string | null,
-    longitude?: string | null,
   } | null,
 };
 
@@ -281,14 +220,8 @@ export type ListPostsQuery = {
       title: string,
       text: string,
       media: string,
-      mediaType?: string | null,
-      externalLink?: string | null,
       createdAt?: string | null,
-      isPublic?: boolean | null,
-      pdfFile?: string | null,
       updatedAt?: string | null,
-      latitude?: string | null,
-      longitude?: string | null,
     } | null > | null,
     nextToken?: string | null,
   } | null,
@@ -303,14 +236,8 @@ export type OnCreatePostSubscription = {
     title: string,
     text: string,
     media: string,
-    mediaType?: string | null,
-    externalLink?: string | null,
     createdAt?: string | null,
-    isPublic?: boolean | null,
-    pdfFile?: string | null,
     updatedAt?: string | null,
-    latitude?: string | null,
-    longitude?: string | null,
   } | null,
 };
 
@@ -323,14 +250,8 @@ export type OnUpdatePostSubscription = {
     title: string,
     text: string,
     media: string,
-    mediaType?: string | null,
-    externalLink?: string | null,
     createdAt?: string | null,
-    isPublic?: boolean | null,
-    pdfFile?: string | null,
     updatedAt?: string | null,
-    latitude?: string | null,
-    longitude?: string | null,
   } | null,
 };
 
@@ -343,13 +264,7 @@ export type OnDeletePostSubscription = {
     title: string,
     text: string,
     media: string,
-    mediaType?: string | null,
-    externalLink?: string | null,
     createdAt?: string | null,
-    isPublic?: boolean | null,
-    pdfFile?: string | null,
     updatedAt?: string | null,
-    latitude?: string | null,
-    longitude?: string | null,
   } | null,
 };

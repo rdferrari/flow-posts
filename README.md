@@ -36,9 +36,62 @@ Warning: you will not be able to edit these selections.<br />
 How do you want users to be able to sign in? Username<br />
 Do you want to configure advanced settings? No, I am done.
 
+`amplify add api`
+
+Please select from one of the below mentioned services: GraphQL<br />
+? Provide API name: flowpostsapi<br />
+? Choose the default authorization type for the API API key<br />
+? Enter a description for the API key: public<br />
+? After how many days from now the API key should expire (1-365): 365<br />
+? Do you want to configure advanced settings for the GraphQL API Yes, I want to make some additional changes.<br />
+? Configure additional auth types? Yes<br />
+? Choose the additional authorization types you want to configure for the API Amazon Cognito User Pool<br />
+Cognito UserPool configuration<br />
+Use a Cognito user pool configured as a part of this project.<br />
+? Enable conflict detection? No<br />
+? Do you have an annotated GraphQL schema? No<br />
+? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)<br />
+Do you want to edit the schema now? Yes<br />
+<br />
+Copy and paste Schema<br />
+<br />
+type Post<br />
+@model<br />
+@auth(<br />
+rules: [<br />
+{ allow: owner, ownerField: "owner" }<br />
+{ allow: public, operations: [read] }<br />
+{ allow: private, operations: [read] }<br />
+]<br />
+) {<br />
+id: ID!<br />
+owner: String<br />
+relation: String<br />
+title: String!<br />
+text: String!<br />
+media: String!<br />
+createdAt: String<br />
+updatedAt: String<br />
+}<br />
+
 `amplify push`
 
-Are you sure you want to continue? Yes
+<br />
+Category | Resource name     | Operation | Provider plugin   |<br />
+| -------- | ----------------- | --------- | ----------------- |<br />
+| Auth     | flowposts07da9e87 | Create    | awscloudformation |<br />
+| Api      | flowpostsapi      | Create    | awscloudformation |<br />
+? Are you sure you want to continue? Yes<br />
+
+GraphQL schema compiled successfully.<br />
+
+? Do you want to generate code for your newly created GraphQL API Yes<br />
+? Choose the code generation language target typescript<br />
+? Enter the file name pattern of graphql queries, mutations and subscriptions src graphql/\*_/_.ts<br />
+? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions Yes<br />
+? Enter maximum statement depth [increase from default if your schema is deeply nested] 2<br />
+
+? Enter the file name for the generated code src/API.ts<br />
 
 `yarn install`
 
