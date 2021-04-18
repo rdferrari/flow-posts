@@ -8,7 +8,6 @@ import { useForm, Controller } from "react-hook-form";
 import { lightGrey, darkGrey, action } from "../styles/colors";
 
 import styled from "styled-components";
-import Post from "../pages/Post";
 
 const Section = styled.div<{ backgroundColor: string; color: string }>`
   background-color: ${(props) => props.backgroundColor};
@@ -83,24 +82,17 @@ const BoxLineVideo = styled.video`
   }
 `;
 
-const Subtitle = styled.h2`
-  font-size: 25px;
-
-  @media only screen and (min-width: 768px) {
-    font-size: 40px;
-  }
-`;
-
 const InputTile = styled.textarea`
   background-color: ${darkGrey};
   border: 0.5px solid #ebebeb;
   color: ${lightGrey};
   font-family: titleFont;
-  font-size: 18px;
+  font-size: 25px;
+  padding: 5px;
   width: 280px;
 
   @media only screen and (min-width: 768px) {
-    font-size: 22px;
+    font-size: 40px;
     width: 630px;
   }
 `;
@@ -111,26 +103,12 @@ const InputTextArea = styled.textarea`
   color: ${lightGrey};
   font-family: textFontLight;
   font-size: 18px;
+  padding: 5px;
   width: 280px;
 
   @media only screen and (min-width: 768px) {
     font-size: 22px;
     width: 630px;
-  }
-`;
-
-const BtContainer = styled.div`
-  display: flex;
-`;
-
-const Bt = styled.p`
-  cursor: pointer;
-  font-family: textFontRegular;
-  font-size: 18px;
-  margin-right: 20px;
-
-  @media only screen and (min-width: 768px) {
-    font-size: 22px;
   }
 `;
 
@@ -270,128 +248,69 @@ function EditPost({ setPosts, posts, postId }: any) {
   }
 
   return (
-    <>
+    <Section backgroundColor={darkGrey} color={lightGrey} key={post.id}>
       <Link to="/posts">
         <Button>
           <p>Back to posts list</p>
         </Button>
       </Link>
-      <Section backgroundColor={darkGrey} color={lightGrey} key={post.id}>
-        <ContentContainer>
-          <TextContainer>
-            <div>
-              <p>Title</p>
-              <Controller
-                control={control}
-                render={({ onChange, onBlur, value }) => (
-                  <InputTile
-                    rows={1}
-                    onBlur={onBlur}
-                    onChange={(value) => onChange(value)}
-                    value={value}
-                    placeholder="Title"
-                  />
-                )}
-                name="title"
-                rules={{ required: true }}
-                defaultValue={post.title}
-              />
-
-              {errors.code && (
-                <p className="error-message">Title is required</p>
-              )}
-            </div>
-
-            <div>
-              <p>Post</p>
-              <Controller
-                control={control}
-                render={({ onChange, onBlur, value }) => (
-                  <InputTextArea
-                    rows={12}
-                    onBlur={onBlur}
-                    onChange={(value) => onChange(value)}
-                    value={value}
-                    placeholder="Paragraph"
-                  />
-                )}
-                name="text"
-                rules={{ required: true }}
-                defaultValue={post.text}
-              />
-              {errors.code && (
-                <p className="error-message">Paragraph is required</p>
-              )}
-            </div>
-          </TextContainer>
+      <ContentContainer>
+        <TextContainer>
           <div>
-            <ContentImage alt={post.title} src={post.media} />
-            <BoxLineVideo></BoxLineVideo>
-            <input type="file" onChange={onChangeFile} />
-            {/* {prevImage && <img alt="Uploaded" src={prevImage} />} */}
-            {uploading && <p>{uploading}</p>}
+            <p>Title</p>
+            <Controller
+              control={control}
+              render={({ onChange, onBlur, value }) => (
+                <InputTile
+                  rows={1}
+                  onBlur={onBlur}
+                  onChange={(value) => onChange(value)}
+                  value={value}
+                  placeholder="Title"
+                />
+              )}
+              name="title"
+              rules={{ required: true }}
+              defaultValue={post.title}
+            />
+
+            {errors.code && <p className="error-message">Title is required</p>}
           </div>
-        </ContentContainer>
-      </Section>
+
+          <div>
+            <p>Post</p>
+            <Controller
+              control={control}
+              render={({ onChange, onBlur, value }) => (
+                <InputTextArea
+                  rows={12}
+                  onBlur={onBlur}
+                  onChange={(value) => onChange(value)}
+                  value={value}
+                  placeholder="Paragraph"
+                />
+              )}
+              name="text"
+              rules={{ required: true }}
+              defaultValue={post.text}
+            />
+            {errors.code && (
+              <p className="error-message">Paragraph is required</p>
+            )}
+          </div>
+        </TextContainer>
+        <div>
+          <ContentImage alt={post.title} src={post.media} />
+          <BoxLineVideo></BoxLineVideo>
+          <input type="file" onChange={onChangeFile} />
+          {/* {prevImage && <img alt="Uploaded" src={prevImage} />} */}
+          {uploading && <p>{uploading}</p>}
+        </div>
+      </ContentContainer>
       <Button onClick={handleSubmit(savePost)}>
         <p>Save post</p>
       </Button>
-    </>
-
-    // <FormContainer>
-    //   <h1>Edit Post</h1>
-    //   {saving ? (
-    //     <p>saving</p>
-    //   ) : (
-    //     post && (
-    //       <>
-    //         <Controller
-    //           control={control}
-    //           render={({ onChange, onBlur, value }) => (
-    //             <input
-    //               onBlur={onBlur}
-    //               onChange={(value) => onChange(value)}
-    //               value={value}
-    //               placeholder="Title"
-    //             />
-    //           )}
-    //           name="title"
-    //           rules={{ required: true }}
-    //           defaultValue={post.title}
-    //         />
-    //         {errors.code && <p className="error-message">Title is required</p>}
-
-    //         <Controller
-    //           control={control}
-    //           render={({ onChange, onBlur, value }) => (
-    //             <textarea
-    //               rows={6}
-    //               onBlur={onBlur}
-    //               onChange={(value) => onChange(value)}
-    //               value={value}
-    //               placeholder="Paragraph"
-    //             />
-    //           )}
-    //           name="text"
-    //           rules={{ required: true }}
-    //           defaultValue={post.text}
-    //         />
-    //         {errors.code && (
-    //           <p className="error-message">Paragraph is required</p>
-    //         )}
-
-    //         <input type="file" onChange={onChangeFile} />
-    //         {prevImage && <img alt="Uploaded" src={prevImage} />}
-
-    //         <button onClick={handleSubmit(savePost)}>
-    //           <p>Save post</p>
-    //         </button>
-    //         {/* <button onClick={() => setEditPost(!editPost)}>Close</button> */}
-    //         {uploading && <p>{uploading}</p>}
-    //       </>
-    //     )
-    //   )}
-    // </FormContainer>
+    </Section>
   );
 }
 
