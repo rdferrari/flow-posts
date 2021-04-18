@@ -1,31 +1,52 @@
-import React from "react";
-// import styled from "styled-components";
+import React, { useState } from "react";
+import styled from "styled-components";
 import List from "../components/List";
 import CreatePost from "../components/CreatePost";
+import { lightGrey, darkGrey, action } from "../styles/colors";
 
 import { UserStatusContext } from "../App";
 
-// const HomeContainer = styled.div`
-//   margin-top: 100px;
+const CreateButton = styled.p`
+  background-color: ${action};
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  bottom: 20px;
+  color: ${darkGrey};
+  padding: 10px 20px;
+  position: fixed;
+  right: 20px;
 
-//   @media only screen and (min-width: 1024px) {
-//     margin: 0;
-//     position: absolute;
-//     top: 40%;
-//     left: 50%;
-//     transform: translate(-50%, -40%);
-//   }
-// `;
+  @media only screen and (min-width: 768px) {
+    bottom: 60px;
+    right: 60px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    bottom: 100px;
+    right: 100px;
+`;
 
 function Home({ posts, setPosts }: any): JSX.Element {
+  const [showCreatePost, setShowCreatePost] = useState(false);
+
   return (
     <UserStatusContext.Consumer>
       {(user) => (
         <>
-          {user !== "no user authenticated" && (
-            <CreatePost posts={posts} setPosts={setPosts} />
+          {showCreatePost ? (
+            user !== "no user authenticated" && (
+              <>
+                <CreatePost posts={posts} setPosts={setPosts} />
+              </>
+            )
+          ) : (
+            <List posts={posts} setPosts={setPosts} />
           )}
-          <List posts={posts} setPosts={setPosts} />
+          {user !== "no user authenticated" && (
+            <CreateButton onClick={() => setShowCreatePost(!showCreatePost)}>
+              {showCreatePost ? `Posts List` : "New Post"}
+            </CreateButton>
+          )}
         </>
       )}
     </UserStatusContext.Consumer>

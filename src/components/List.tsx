@@ -91,6 +91,21 @@ const BodyText = styled.p`
   }
 `;
 
+const BtContainer = styled.div`
+  display: flex;
+`;
+
+const Bt = styled.p`
+  cursor: pointer;
+  font-family: textFontRegular;
+  font-size: 18px;
+  margin-right: 20px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 22px;
+  }
+`;
+
 const List = ({ posts, setPosts }: any) => {
   async function removePost(postId: any, mediaKey: any) {
     try {
@@ -121,23 +136,20 @@ const List = ({ posts, setPosts }: any) => {
         <p>loading...</p>
       ) : (
         posts.map((post: any) => (
-          <Section backgroundColor={lightGrey} color={darkGrey} key={post.id}>
+          <Section backgroundColor={darkGrey} color={lightGrey} key={post.id}>
             <ContentContainer>
               <TextContainer>
-                <Link to={`/post/${post.id}`}>
-                  <Subtitle>
-                    Open Source
-                    <br /> and Open Access
-                  </Subtitle>
-                </Link>
-                <BodyText>
-                  The Flowception.io source code is Open Source and the content
-                  is Open Access. It is a serverless AWS Amplify Progressive Web
-                  Application with React JS and TypeScript.
-                </BodyText>
-                <button onClick={() => removePost(post.id, post.media)}>
-                  delete
-                </button>
+                <Subtitle>{post.title}</Subtitle>
+
+                <BodyText>{post.text}</BodyText>
+                <BtContainer>
+                  <Link to={`/post/${post.id}`}>
+                    <Bt>| Edit |</Bt>
+                  </Link>
+                  <Bt onClick={() => removePost(post.id, post.media)}>
+                    | delete |
+                  </Bt>
+                </BtContainer>
               </TextContainer>
               <div>
                 <ContentImage alt={post.title} src={post.media} />
