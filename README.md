@@ -1,6 +1,6 @@
 # Flow posts
 
-AWS Amplify, React JS and TypeScript sign in, sign up, user confirmation, password recovery and PWA install button.
+AWS Amplify - Auth, API, Storage - React JS and TypeScript.
 
 ## Clone the repo
 
@@ -73,6 +73,19 @@ media: String!<br />
 createdAt: String<br />
 updatedAt: String<br />
 }<br />
+
+`amplify add storage`
+
+? Please select from one of the below mentioned services: Content (Images, audio
+, video, etc.)<br />
+? Please provide a friendly name for your resource that will be used to label th
+is category in the project: flowposts<br />
+? Please provide bucket name: flowpostsdcde08605dc84af99efbbea229940b36<br />
+? Who should have access: Auth and guest users<br />
+? What kind of access do you want for Authenticated users? create/update, read,
+delete<br />
+? What kind of access do you want for Guest users? read<br />
+? Do you want to add a Lambda Trigger for your S3 Bucket? No<br />
 
 `amplify push`
 
