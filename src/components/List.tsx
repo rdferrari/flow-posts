@@ -12,7 +12,7 @@ const Section = styled.div<{ backgroundColor: string; color: string }>`
   justify-content: center;
   align-items: center;
   margin-top: -17px;
-  padding: 80px 20px;
+  padding: 40px 20px;
 `;
 
 const ContentContainer = styled.div`
@@ -106,7 +106,7 @@ const Bt = styled.p`
   }
 `;
 
-const List = ({ posts, setPosts }: any) => {
+const List = ({ posts, setPosts, user }: any) => {
   async function removePost(postId: any, mediaKey: any) {
     try {
       // method
@@ -142,14 +142,16 @@ const List = ({ posts, setPosts }: any) => {
                 <Subtitle>{post.title}</Subtitle>
 
                 <BodyText>{post.text}</BodyText>
-                <BtContainer>
-                  <Link to={`/post/${post.id}`}>
-                    <Bt>| Edit |</Bt>
-                  </Link>
-                  <Bt onClick={() => removePost(post.id, post.media)}>
-                    | delete |
-                  </Bt>
-                </BtContainer>
+                {user !== "no user authenticated" && (
+                  <BtContainer>
+                    <Link to={`/post/${post.id}`}>
+                      <Bt>| Edit |</Bt>
+                    </Link>
+                    <Bt onClick={() => removePost(post.id, post.media)}>
+                      | delete |
+                    </Bt>
+                  </BtContainer>
+                )}
               </TextContainer>
               <div>
                 <ContentImage alt={post.title} src={post.media} />

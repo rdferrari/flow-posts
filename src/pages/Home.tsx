@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { lightGrey, darkGrey, action } from "../styles/colors";
 
@@ -179,7 +180,9 @@ function Home({ posts, setPosts }: any): JSX.Element {
               <br /> substanceless
               <br /> unsatisfactory
             </Tagline>
-            <Button>Explore</Button>
+            <Link to="/posts">
+              <Button>Explore</Button>
+            </Link>
           </TaglineContainer>
           <Section backgroundColor={darkGrey} color={lightGrey}>
             <ContentContainer>

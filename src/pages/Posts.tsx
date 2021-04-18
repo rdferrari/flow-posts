@@ -40,7 +40,7 @@ function Home({ posts, setPosts }: any): JSX.Element {
               </>
             )
           ) : (
-            <List posts={posts} setPosts={setPosts} />
+            <List posts={posts} setPosts={setPosts} user={user} />
           )}
           {user !== "no user authenticated" && (
             <CreateButton onClick={() => setShowCreatePost(!showCreatePost)}>
