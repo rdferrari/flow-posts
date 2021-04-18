@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserStatusContext } from "../App";
 import styled from "styled-components";
-import LinkStyled from "./LinkStyled";
+import { lightGrey } from "../styles/colors";
 
 interface Props {
   signOut(): void;
@@ -60,13 +60,29 @@ const MenuContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
+  float: right;
   margin: 100px 20px;
+
+  @media only screen and (min-width: 768px) {
+    margin: 100px 60px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin: 100px;
 `;
 
-const LinkHeader = styled.p`
-  color: ${({ theme }) => theme.text};
+const Button = styled.p`
+  border-bottom: 2px solid ${lightGrey};
+  color: ${lightGrey};
   cursor: pointer;
-  margin: 10px;
+  font-family: textFontBold;
+  font-size: 18px;
+  padding: 10px;
+  width: 150px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 22px;
+  }
 `;
 
 function Header({ signOut, themeToggler, theme }: Props): JSX.Element {
@@ -102,21 +118,22 @@ function Header({ signOut, themeToggler, theme }: Props): JSX.Element {
     return (
       <MenuContainer>
         <TextContainer>
-          <p>Showmenu</p>
           <Link to="/">
-            <p onClick={() => setShowMenu(!showMenu)}>Home</p>
+            <Button onClick={() => setShowMenu(!showMenu)}>Home</Button>
           </Link>
           <Link to="/posts">
-            <p onClick={() => setShowMenu(!showMenu)}>Posts</p>
+            <Button onClick={() => setShowMenu(!showMenu)}>Posts</Button>
           </Link>
           {user === "no user authenticated" ? (
             <Link to="/auth">
-              <p onClick={() => setShowMenu(!showMenu)}>Sign in</p>
+              <Button onClick={() => setShowMenu(!showMenu)}>Sign in</Button>
             </Link>
           ) : (
-            <p onClick={signOut}>Sign out</p>
+            <Button onClick={signOut}>Sign out</Button>
           )}
-          {installPromptEvent && <p onClick={handleInstallPwa}>Install</p>}
+          {installPromptEvent && (
+            <Button onClick={handleInstallPwa}>Install</Button>
+          )}
         </TextContainer>
       </MenuContainer>
     );

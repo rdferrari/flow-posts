@@ -210,16 +210,13 @@ function Home({ posts, setPosts }: any): JSX.Element {
             <ContentContainer>
               <TextContainer>
                 <Subtitle>
-                  Flow + Perception
-                  <br /> = Flowception
+                  Open Source
+                  <br /> and Open Access
                 </Subtitle>
                 <BodyText>
-                  This mind-body is arising and passing way, burning like fire.
-                  Pleasant or painful experiences, they are unsatisfactory. The
-                  former because of its inevitable end; the last do not need an
-                  explanation. If it is changing, it is never the same, it is a
-                  flow of perceptions, which is the experience of Flowception -
-                  impermanent, substanceless and unsatisfactory.
+                  The Flowception.io source code is Open Source and the content
+                  is Open Access. It is a serverless AWS Amplify Progressive Web
+                  Application with React JS and TypeScript.
                 </BodyText>
               </TextContainer>
               <div>
