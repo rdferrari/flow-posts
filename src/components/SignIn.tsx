@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Auth } from "aws-amplify";
 import { useForm, Controller } from "react-hook-form";
 import styled from "styled-components";
+import { action } from "../styles/colors";
 
 const FormContainer = styled.div`
   margin-top: 20px;
@@ -12,6 +13,17 @@ const FormContainer = styled.div`
 
   @media only screen and (min-width: 1024px) {
     margin-top: 40px;
+  }
+`;
+
+const Button = styled.p`
+  color: ${action};
+  cursor: pointer;
+  font-family: textFontBold;
+  font-size: 18px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 22px;
   }
 `;
 
@@ -252,16 +264,14 @@ const SignIn = () => {
       />
       {errors.password && <p className="error-message">Password is required</p>}
 
-      <button onClick={handleSubmit(signIn)}>
-        <p>Sign in</p>
-      </button>
+      <Button onClick={handleSubmit(signIn)}>{"< sign in />"}</Button>
 
       {errMessage && <p className="error-message">{errMessage}</p>}
-      <div>
+      {/* <div>
         <p onClick={() => setPassForgot(true)} className="button-text">
           {"< Forgotten password? />"}
         </p>
-      </div>
+      </div> */}
     </FormContainer>
   );
 };

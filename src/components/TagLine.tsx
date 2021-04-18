@@ -21,17 +21,10 @@ const TagContainer = styled.div`
 const Tagline = () => {
   return (
     <TagContainer>
-      <h1>Dark Auth</h1>
+      <h1>Flowception</h1>
       <p>
-        This is an AWS Amplify + PWA React TypeScript + Dark or Light style +
-        custom AWS Cognito authentication.
-        {/* <LinkA
-          className="button-text"
-          href="https://github.com/rdferrari/bare-auth-styled"
-          target="blank"
-        >
-          {"< repo :) />"}
-        </LinkA>{" "} */}
+        This is an AWS Amplify + PWA React TypeScript + custom AWS Cognito
+        authentication + GraphQl API + CRUDE + Storage (Upload images)
       </p>
     </TagContainer>
   );
